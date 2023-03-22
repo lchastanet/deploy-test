@@ -1,3 +1,4 @@
+/* eslint react/prop-types: 0 */
 import { useState } from "react";
 import axios from "axios";
 import styled from "@emotion/styled";
