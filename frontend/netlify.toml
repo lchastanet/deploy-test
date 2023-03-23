@@ -1,4 +1,4 @@
 [[redirects]]
 from = '/*'
 status = 200
-to = '/dist/index.html'
+to = '/frontend/dist/index.html'
