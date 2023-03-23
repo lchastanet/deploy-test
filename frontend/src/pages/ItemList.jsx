@@ -24,7 +24,7 @@ function ItemList() {
     <StyledContainer>
       <AddItemForm setItems={setItems} items={items} />
       <ul>
-        {items.length &&
+        {Array.isArray(items) &&
           items.map((item) => <li key={item.id}>{item.title}</li>)}
       </ul>
     </StyledContainer>
