@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "@emotion/styled";
+import axios from "axios";
 import AddItemForm from "../components/AddItemForm";
 
 const StyledContainer = styled.div`
@@ -13,7 +14,11 @@ const StyledContainer = styled.div`
 function ItemList() {
   const [items, setItems] = useState([]);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/items`)
+      .then((res) => setItems(res.data));
+  }, []);
 
   return (
     <StyledContainer>

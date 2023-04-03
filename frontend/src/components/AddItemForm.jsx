@@ -1,6 +1,7 @@
 /* eslint react/prop-types: 0 */
 import { useState } from "react";
 import styled from "@emotion/styled";
+import axios from "axios";
 
 const StyledButton = styled.input`
   font-size: 2rem;
@@ -18,11 +19,23 @@ const StyledForm = styled.form`
   align-items: center;
 `;
 
-function AddItemForm() {
+function AddItemForm({ setItems, items }) {
   const [itemTitle, setItemTitle] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (itemTitle.length > 3) {
+      axios
+        .post(`${import.meta.env.VITE_BACKEND_URL}/items`, {
+          title: itemTitle,
+        })
+        .then(() =>
+          setItems([...items, { id: items.at(-1).id + 1, title: itemTitle }])
+        );
+    } else {
+      alert("Please give a title");
+    }
   };
 
   return (
